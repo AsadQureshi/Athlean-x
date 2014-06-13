@@ -8,7 +8,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var app = express();
 var cons = require('consolidate');
-
+var user= require('./routes/user');
 
 // view engine setup
 app.engine('html', cons.swig);
@@ -27,6 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
     res.send("Welcome to Athlean-x");
 });
+app.get('/view/user', user.addUser);
+
 
 module.exports = app;
 app.listen(3000, function() {
