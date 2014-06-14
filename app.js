@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var login = require('./routes/login');
 var app = express();
 var cons = require('consolidate');
 var user= require('./routes/user');
@@ -29,6 +30,12 @@ app.get('/', function(req, res) {
 });
 app.get('/view/user', user.viewUser);
 app.post('/user/add',user.addUser);
+app.get('/login', login.viewLogin);
+app.post('/record',login.addlogin);
+
+app.get('/user', function(req, res) {
+    res.redirect('/view/user');
+});
 
 module.exports = app;
 app.listen(3000, function() {
