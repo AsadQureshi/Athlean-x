@@ -1,9 +1,9 @@
 var mongoose = require('../connection/connection.js');
 var userSchema = new mongoose.Schema({
-    Userame: String,
+    Username: String,
     password: String,
-    age: Number,
-    Joining_date:Date,
+    Age: Number,
+    Joining_date:String,
     isadmin:Boolean,
 });
 var user = mongoose.model('User', userSchema);

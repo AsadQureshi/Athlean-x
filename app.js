@@ -27,8 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
     res.send("Welcome to Athlean-x");
 });
-app.get('/view/user', user.addUser);
-
+app.get('/view/user', user.viewUser);
+app.post('/user/add',user.addUser);
 
 module.exports = app;
 app.listen(3000, function() {
