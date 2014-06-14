@@ -1,4 +1,4 @@
-var userSchema = require('../models/Login');
+var loginSchema = require('../models/Login');
 exports.viewLogin = function(req, res) {
     res.render('login.html');
 }
@@ -6,7 +6,7 @@ exports.addlogin = function(req, res) {
     
     if(req.body)
     {
-    var data= new userSchema({
+    var data= new loginSchema({
          Username: req.body.Username ,
          password: req.body.password,
      });
