@@ -5,8 +5,8 @@ var exerciseSchema = new mongoose.Schema({
     created: {
         type: Date,
         default: Date.now()
-    },
-    exercises: [exerciseSchema]
+    }
+    
 });
 
 var userSchema = new mongoose.Schema({
@@ -15,6 +15,7 @@ var userSchema = new mongoose.Schema({
     Age: Number,
     Joining_date: String,
     isadmin: Boolean,
+    exercises: [exerciseSchema]
 });
 var user = mongoose.model('User', userSchema);
 module.exports = user;
