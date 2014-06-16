@@ -1,11 +1,12 @@
 var mongoose = require('../connection/connection.js');
-// var exerciseSchema = require('../models/Exercise.js');
 
+/* exercise schema */
 var exerciseSchema = new mongoose.Schema({
     exercise: String,
     reps: Number
 });
 
+/* workout nested schemas */
 var workoutSchema = new mongoose.Schema({
     created: {
         type: Date,
@@ -15,6 +16,5 @@ var workoutSchema = new mongoose.Schema({
 });
 
 var workout = mongoose.model('Workout', workoutSchema);
-
 
 module.exports = workout;

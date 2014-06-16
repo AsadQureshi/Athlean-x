@@ -37,7 +37,6 @@ app.get('/', function(req, res) {
 // app.get('/workout', workout.viewWorkout);
 // app.post('/exercises', workout.addworkout);
 
-
 app.get('/test-schema', workout.testnestedSchema);
 //app.get('/view/menu', menu.viewMenu);
 
