@@ -1,4 +1,5 @@
 var loginSchema = require('../models/Login');
+
 exports.viewLogin = function(req, res) {
     res.render('login.html');
 }

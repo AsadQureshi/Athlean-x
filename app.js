@@ -30,12 +30,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
     res.send("Welcome to Athlean-x");
 });
-app.get('/user', user.viewUser);
-app.post('/user/add', user.addUser);
-app.get('/login', login.viewLogin);
-app.post('/record', login.addlogin);
-app.get('/workout', workout.viewWorkout);
-app.post('/exercises', workout.addworkout);
+// app.get('/user', user.viewUser);
+// app.post('/user/add', user.addUser);
+// app.get('/login', login.viewLogin);
+// app.post('/record', login.addlogin);
+// app.get('/workout', workout.viewWorkout);
+// app.post('/exercises', workout.addworkout);
+
+
+app.get('/test-schema', workout.testnestedSchema);
 //app.get('/view/menu', menu.viewMenu);
 
 app.get('/user', function(req, res) {
