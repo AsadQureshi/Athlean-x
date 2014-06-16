@@ -6,11 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var login = require('./routes/login');
 var app = express();
 var cons = require('consolidate');
 var user= require('./routes/user');
-
+var login = require('./routes/login');
+var menu = require('./routes/menu');
+var workout = require('./routes/workout')
 // view engine setup
 app.engine('html', cons.swig);
 app.set('view engine', 'html');
@@ -28,10 +29,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
     res.send("Welcome to Athlean-x");
 });
-app.get('/view/user', user.viewUser);
+app.get('/user', user.viewUser);
 app.post('/user/add',user.addUser);
 app.get('/login', login.viewLogin);
 app.post('/record',login.addlogin);
+app.get('/workout', workout.viewWorkout);
+app.post('/exercises',workout.addworkout);
+//app.get('/view/menu', menu.viewMenu);
 
 app.get('/user', function(req, res) {
     res.redirect('/view/user');

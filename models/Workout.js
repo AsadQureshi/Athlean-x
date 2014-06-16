@@ -8,7 +8,8 @@ date:Date,
 exercises:[{type: Schema.Types.ObjectId, ref :'Exercise'}]
 });
 var exerciseSchema = new Schema({
-  _Name : { type: Number, ref: 'Workout' },
+  Exercise : { type: Number, ref: 'Workout' },
+  Raps : {type:Number, ref :'Workout'}
 });
 };
 models.WorkoutModel = connection.model('Workout', workoutSchema);
