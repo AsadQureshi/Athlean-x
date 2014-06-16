@@ -12,6 +12,8 @@ var user = require('./routes/user');
 var login = require('./routes/login');
 var menu = require('./routes/menu');
 var workout = require('./routes/workout')
+var http = require('http');
+var passport = require('passport');
 
 // view engine setup
 app.engine('html', cons.swig);
@@ -36,7 +38,6 @@ app.get('/login', login.viewLogin);
 app.post('/record', login.addlogin);
 app.get('/workout', workout.viewWorkout);
 app.post('/workouts', workout.nestedSchema);
-
 
 
 app.get('/menu', menu.viewMenu);
