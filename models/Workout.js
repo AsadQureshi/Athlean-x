@@ -1,19 +1,10 @@
 var mongoose = require('../connection/connection.js');
-module.exports = function(mongoose) {
-var models={
+var exerciseSchema = require('Exercise.js');
+
 var workoutSchema = new mongoose.Schema({
-
-date:Date,
-//_id:Number,
-exercises:[{type: Schema.Types.ObjectId, ref :'Exercise'}]
+    date: Date,
+    exercises: [exerciseSchema]
 });
-var exerciseSchema = new Schema({
-  Exercise : { type: Number, ref: 'Workout' },
-  Raps : {type:Number, ref :'Workout'}
-});
-};
-models.WorkoutModel = connection.model('Workout', workoutSchema);
-    models.exercisesModel = connection.model('exercises', exercisesSchema);
- return models;
 
-}
+var workout = mongoose.model('Workout', workoutSchema);
+module.exports = workout;
