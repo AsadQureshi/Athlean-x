@@ -39,6 +39,8 @@ app.post('/loginsuccessfull', _user.getLogin);
 app.get('/workout', workout.viewWorkout);
 app.post('/workouts', workout.nestedSchema);
 app.get('/menu', menu.viewMenu);
+
+
 app.get('/home', function(req, res) {
     res.redirect('/login');
 });
