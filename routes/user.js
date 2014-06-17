@@ -27,34 +27,33 @@ exports.addUser = function(req, res) {
     // }
 
 
-   var wk = new userSchema();
+    var wk = new userSchema();
 
-    
+
 
     var data = new userSchema({
-            Username: req.body.Username,
-            password: req.body.password,
-            Age: req.body.age,
-            Joining_date: req.body.Joining_date,
-            isadmin: req.body.isadmin
+        Username: req.body.Username,
+        password: req.body.password,
+        Age: req.body.age,
+        Joining_date: req.body.Joining_date,
+        isadmin: req.body.isadmin
 
-        });
+    });
 
     data.exercises.push({
         exercise: req.body.Exercise,
         reps: req.body.reps
-        
+
     });
-    
-        data.save(function(err, data) {
-            if (err) {
-                res.send(err);
-            } else {
-                console.log(data);
-                res.send(data);
 
-            }
-        });
+    data.save(function(err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log(data);
+            res.send(data);
 
-}; 
+        }
+    });
 
+};
