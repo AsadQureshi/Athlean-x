@@ -35,13 +35,10 @@ app.get('/', function(req, res) {
 app.get('/user', user.viewUser);
 app.post('/user/add', user.addUser);
 app.get('/login', login.viewLogin);
-app.post('/record', login.addlogin);
+app.post('/loginsuccessfull', login.getLogin);
 app.get('/workout', workout.viewWorkout);
 app.post('/workouts', workout.nestedSchema);
-
-
 app.get('/menu', menu.viewMenu);
-
 app.get('/user', function(req, res) {
     res.redirect('/view/user');
 });
