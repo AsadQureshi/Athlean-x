@@ -1,9 +1,16 @@
-var login = require('../models/User');
+var _user = require('../models/User');
 
 exports.viewLogin = function(req, res) {
     res.render('login.html');
-}
-exports.getLogin = function(req, res) {
+} // var user = new user();
+    // user.username = 'sultansaadat';
+    // // user.email = 'sultansaadat@gmail.com';
+    // user.password = user.generateHash('test123');
+    // // user.sessionToken = null;
+
+
+
+// exports.getLogin = function(req, res) {
     // login.find({
     //     Username: req.body.Username,
     //     password: req.body.password
@@ -26,58 +33,49 @@ exports.getLogin = function(req, res) {
 
     //create a new user with the new schema
     
-    var user = new User();
-    user.username = 'sultansaadat';
-    user.email = 'sultansaadat@gmail.com';
-    user.password = user.generateHash('test123');
-    // user.sessionToken = null;
+   
 
 
+exports.getlogin = function(req, res) {
+    User.findOne({
+        Username: req.body.Username
+    }, function(err, _user) {
+        if (err) {
+            res.json(err);
+        };
+        if (!_user) {
+            res.json('User Not Found');
+        };
+        if (_user.validatePassword(req.body.password)) {
+            if (!_user.sessionToken) {
+                _user.sessionToken = generateToken();
+                _user.save(function(err) {
+                    if (err) {
+                        res.json(err);
+                    } else {
+                        res.send(200, {
+                            sessionkey: _user.sessionToken,
+                            status: 'success',
+                            message: 'logged in successfully',
+                            code: 200
+                        });
+                    }
+                });
+            } else {
+                res.send(200, {
+                    sessionkey: _user.sessionToken,
+                    status: 'success',
+                    message: 'already logged in',
+                    code: 200
+                });
+            }
+        } else {
+            res.send(200, {
+                status: 'failure',
+                message: 'invalid password',
+                code: 200
+            });
+        }
+
+    });
 };
-
-
-// verify existing user
-
-// exports.login = function(req, res) {
-//     User.findOne({
-//         username: 'sultansaadat'
-//     }, function(err, user) {
-//         if (err) {
-//             res.json(err);
-//         };
-//         if (!user) {
-//             res.json('User Not Found');
-//         };
-//         if (user.validatePassword('test123')) {
-//             if (!user.sessionToken) {
-//                 user.sessionToken = generateToken();
-//                 user.save(function(err) {
-//                     if (err) {
-//                         res.json(err);
-//                     } else {
-//                         res.send(200, {
-//                             sessionkey: user.sessionToken,
-//                             status: 'success',
-//                             message: 'logged in successfully',
-//                             code: 200
-//                         });
-//                     }
-//                 });
-//             } else {
-//                 res.send(200, {
-//                     sessionkey: user.sessionToken,
-//                     status: 'success',
-//                     message: 'already logged in',
-//                     code: 200
-//                 });
-//             }
-//         } else {
-//             res.send(200, {
-//                 status: 'failure',
-//                 message: 'invalid password',
-//                 code: 200
-//             });
-//         }
-
-//     });
-// };

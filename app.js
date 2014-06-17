@@ -9,7 +9,7 @@ var users = require('./routes/users');
 var app = express();
 var cons = require('consolidate');
 var user = require('./routes/user');
-var login = require('./routes/login');
+var _user = require('./routes/login');
 var menu = require('./routes/menu');
 var workout = require('./routes/workout')
 var http = require('http');
@@ -34,13 +34,13 @@ app.get('/', function(req, res) {
 });
 app.get('/user', user.viewUser);
 app.post('/user/add', user.addUser);
-app.get('/login', login.viewLogin);
-app.post('/loginsuccessfull', login.getLogin);
+app.get('/login', _user.viewLogin);
+app.post('/loginsuccessfull', _user.getLogin);
 app.get('/workout', workout.viewWorkout);
 app.post('/workouts', workout.nestedSchema);
 app.get('/menu', menu.viewMenu);
-app.get('/user', function(req, res) {
-    res.redirect('/view/user');
+app.get('/home', function(req, res) {
+    res.redirect('/login');
 });
 
 module.exports = app;
