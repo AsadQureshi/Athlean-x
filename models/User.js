@@ -42,6 +42,6 @@ userSchema.pre('save', function(next) {
     next();
 });
 
-var user = mongoose.model('User', userSchema);
+var login = mongoose.model('User', userSchema);
 
-module.exports = user;
+module.exports = login;

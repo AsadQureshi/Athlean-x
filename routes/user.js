@@ -32,11 +32,11 @@ exports.addUser = function(req, res) {
 
 
     var data = new userSchema({
-        Username: req.body.Username,
+        username: req.body.Username,
         password: req.body.password,
-        Age: req.body.age,
-        Joining_date: req.body.Joining_date,
-        isadmin: req.body.isadmin
+        age: req.body.age,
+        joining_date: req.body.Joining_date,
+        isadmin: req.body.isadmin,
 
     });
 

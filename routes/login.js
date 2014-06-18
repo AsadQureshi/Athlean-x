@@ -1,8 +1,9 @@
-var _user = require('../models/User');
+var login = require('../models/User');
 
 exports.viewLogin = function(req, res) {
     res.render('login.html');
-} // var user = new user();
+}
+// var user = new user();
 // user.username = 'sultansaadat';
 // // user.email = 'sultansaadat@gmail.com';
 // user.password = user.generateHash('test123');
@@ -36,21 +37,25 @@ exports.viewLogin = function(req, res) {
 
 
 
-exports.getlogin = function(req, res) {
-    _user.findOne({
-            username: req.body.username
+exports.getLogin = function(req, res) {
+    login.findOne({
+            username: req.body.Username
         },
-        function(err, _user) {
+        function(err, login) {
             if (err) {
                 res.json(err);
             };
-            if (!_user) {
+            if (!login) {
                 console.log('message:"User Not Found"');
+                res.send('Invalid username.So, please try again');
+            }
+            else{
+            	console.log('user found,,checking password');
             };
-            if (_user.validatePassword(req.body.password)) {
-                //if (!_user.sessionToken) {
-                //_user.sessionToken = generateToken();
-                _user.save(function(err) {
+            if (login.validatePassword(req.body.password)) {
+                // if (!login.sessionToken) {
+                // login.sessionToken = generateToken();
+                login.save(function(err) {
                     if (err) {
                         res.json(err);
                     } else {
@@ -61,7 +66,7 @@ exports.getlogin = function(req, res) {
                             code: 200
                         });
                     }
-                });	
+                });
             } else {
                 res.send(200, {
                     //sessionkey: _user.sessionToken,
@@ -70,13 +75,13 @@ exports.getlogin = function(req, res) {
                     code: 200
                 });
             }
-        //  else {
-        //     res.send(200, {
-        //         status: 'failure',
-        //         message: 'invalid password',
-        //         code: 200
-        //     });
-        // }
+            //  else {
+            //     res.send(200, {
+            //         status: 'failure',
+            //         message: 'invalid password',
+            //         code: 200
+            //     });
+            //}
 
-    });
+        });
 }
